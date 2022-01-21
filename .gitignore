@@ -1,2 +1,3 @@
+# arquivos e pastas que não devem subir para produção.
 /node_modules
 /temp
