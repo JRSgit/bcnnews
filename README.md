@@ -1,0 +1,2 @@
+site criado para poder traser ao conhecimento das pessoas que desejam sair da alienação do comodismo e da inlusão desse mundo, pois o mesmo não tem proposito de presesar a vida e se de esterminalas.
+criado no ano de 2022 no mes de janeiro por José Ronaldo dos santos.

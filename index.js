@@ -1,15 +1,16 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const fileUpload = require('express-fileupload');
 const mongoose = require('mongoose');
 const path = require('path');
-const cors = require('cors')
-const router = require('./src/router')
+const cors = require('cors');
+const router = require('./src/router');
 
 
 const app = express();
-const uri = 'mongodb+srv://jrsprog:198320jrs@cluster0.a2p4w.mongodb.net/portalnoticia?retryWrites=true&w=majority'
+const uri = process.env.URI
 
 app.use(cors())
 app.use(bodyParser.json());
@@ -23,7 +24,7 @@ app.set('views', path.join(__dirname, './src/views'));
 
 // Session ========
 app.use(session({
-    secret: 'jrsprog2022portalnoticias',
+    secret: process.env.SESSION_SECRET,
     cookie: {maxAge: 60000},
     resave: true,
     saveUninitialized: false,
