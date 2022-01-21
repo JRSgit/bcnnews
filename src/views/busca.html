@@ -1,0 +1,47 @@
+<%- include('partials/header.html') %>
+
+
+    <section class="outras-noticias">
+        <div class="title-outras-noticias">
+            <h2>Busca:</h2>
+            <div class="center">
+                <div style="width: 100%;" class="mais-lidas">
+                    <h3>
+                        <% if(contagem == 0) { %>
+                        Tente outra palavra na busca
+                        <% }else{ %>
+                            <%= contagem %> Notícia encontrada
+                        <% } %>
+                        </h3>
+                    <div class="mais-lida-noticias">
+                        
+                 <% if(contagem == 0 ){ %>
+                    <div>
+                        <img style="max-width: 60%;" src="../public/image/semresult1.jpg" alt="">
+                    </div>
+                    <% } else{ %>
+                        <% for(let i = 0; i < post.length; i++) { %>
+                            <div style="margin-bottom: 200px;" class="mais-lida-noticia-single">
+                                <img src="<%= post[i].imagen %>" alt="sobrevivente">
+                                <div class="texto-mais-lida-single">
+                                    <h4><%= post[i].titulo %></h4>
+                                    <h5><%= post[i].categoria %></h5>
+                                    <%- post[i].conteudo.substr(0,150) %>...
+                                    <br/>
+                                    <i class="fa fa-heart" aria-hidden="true"> <%= post[i].views %></i>
+                                    <a href="<%= post[i].slug %>">Saiba Mais</a>
+                                </div>
+                            </div>
+                            <% } %>
+                    <% } %>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <%- include('partials/footer.html') %>
+    
+</body>
+</html>

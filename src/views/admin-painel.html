@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/painel/style.css"/>
+    <link rel="stylesheet" href="../public/css/home/style.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  crossorigin="anonymous">
+    <title>Painel do BcnNews</title>
+<body>
+</head>
+    <div class="main" style="display: grid; grid-template-columns: 2fr 1fr;">
+            <section class="principal" >
+                <div class="header-painel">
+                    <h1>Painel BcnNews</h1>
+                    <div>
+                        <a href="/" style="font-size: 35px; color: #555; text-decoration: none;">
+                            <i class="fa fa-home" aria-hidden="true" ></i>
+                        </a>
+                        <a href="/logout/admin" style="font-size: 35px; color: #555; text-decoration: none;">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        </a>
+                    </div>
+        
+                </div>
+                    <div class="subHeader">
+                        <h2>Cadastro Notícia</h2>
+                    </div>
+                <div style="display: flex; font-size: 12px;"><b style="color: #333; ">User || </b> <p>   Admin </p></div> 
+                    <form enctype="multipart/form-data" action="/post/noticia" method="post" >
+                        <div class="input" style="display: flex; flex-direction: column; width: 100%;">
+                            <label for="titulo">Titulo: <input 
+                                type="text" name="titulo"  placeholder="Titulo da Notícia" value="<%= noticiaUp.titulo %>" required
+                                /></label>
+                            <label for="categoria">Categoria: <input 
+                                type="text" name="categoria" placeholder="Categoria da Notícia" value="<%= noticiaUp.categoria %>" required
+                                /></label>
+                            <label for="autor">Autor: <input 
+                                type="text" name="autor" placeholder="Autor da Notícia" required value="<%= noticiaUp.autor %>" 
+                                /></label>
+                            <label for="slug">Slug: <input 
+                                type="text" name="slug" placeholder="Slug da Notícia" value="<%= noticiaUp.slug %>" required
+                                /></label>
+                            <label for="conteudo">Conteudo:</label><textarea name="conteudo" placeholder="Conteúdo da Notícia" required ><%= noticiaUp.conteudo %></textarea>
+                            <label for="imagen">Adicionar Imagem:<input type="file" name="imagen" id="imagen" /></label>
+                            <button type="submit">Postar</button>
+                            <label 
+                            for="msg" 
+                            style="color: orange; font-size: 20px; width: 80%; text-align: center; margin: 10px">
+                                <%= msg %>
+                            </label>
+                        </div>
+                    </form>
+                
+            </section>
+    <% if(noticiaUp) { %>
+        <aside class="noticias" style="overflow-y: scroll; height: 600px;">
+            <div class="todas-noti">
+                <h3>Todas as Noticias Postadas</h3>
+                <div class="mais">
+                <% for(let i = 0; i < noticias.length; i++) { %>
+                    <div class="mais-lida" style="width: 100%;">
+                        <img style="width: 100%;"  src="<%= noticias[i].imagen  %>" alt="sobrevivente">
+                        <div class="texto-mais-lida-single">
+                            <h4><%= noticias[i].titulo ||Titulo %></h4>
+                            <%- noticias[i].conteudo.substr(0, 100) ||Conteudo %>...
+                            <br/>
+                            <div style="display: flex; flex-direction: row; margin-top: 10px;">
+
+                                <i class="fa fa-heart" aria-hidden="true"><%= noticias[i].views %> </i>
+                                <a href="/auth/admin/<%= noticias[i]._id %>">Editar</a>
+                                <a  id="editar" href="/delete/noticia/<%= noticias[i]._id %>">Excluir</a>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+                </div>
+            </div>
+        </aside>
+    <% } %>
+        <!-- <% if(noticias == {}) { %> 
+        <aside class="noticias" >
+            <div class="todas-noti">
+                <h3>Editando a Notícia</h3>
+                <div class="mais">
+            
+                    <div class="mais-lida">
+                        <img  src="<%= noticiaUp.imagen %>" alt="sobrevivente">
+                        <div class="texto-mais-lida-single">
+                            <h4><%= noticiaUp.titulo %></h4>
+                            <%- noticiaUp.conteudo.substr(0, 100) ||Conteudo %>...
+                            <br/>
+                            <div style="display: flex; flex-direction: row; margin-top: 10px;">
+                                <i class="fa fa-heart" aria-hidden="true"><%= noticiaUp.views %></i>
+                            
+                                <a href="/<%= noticiaUp._id %>">Excluir</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    <% } %> -->
+    </div>
+
+    <%- include('partials/footer.html') %>
+    <script >
+       
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    
+}
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('../../image/patagonia.jpg') no-repeat;
+}
+.forme{
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    padding: 20px ;
+    border: 1px solid rgba(0, 0, 0, 0.3) ;
+    box-shadow: 10px  rgba(0, 0, 0, 0.3);
+}
+.forme h1{
+    font-weight: bolder ;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #05a3d3;
+}
+.forme h1 span{
+    font-weight: lighter;
+}
+.forme form{
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.forme label{
+    font-size: 25px;
+    color: #888;
+}
+.forme label#msg{
+    font-size: 22px;
+    text-align: center;
+    color: orange;
+    padding: 5px;
+}
+.forme input{
+    width: 100%;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    margin: 10px;
+    list-style: none;
+    font-size: 20px;
+}
+.forme input#submit{
+    width: 80%;
+    border-radius: 10px;
+    background-color: #008bb4;
+    color: #fff;
+    font-size: 2rem;
+    transition: .5s;
+    
+}
+.forme input#submit:hover{
+    cursor: pointer;
+    background-color: #0a4050d8;
+    font-size: 2.3rem;
+}
+::placeholder {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    opacity: 1;
+}
+:-ms-input-placeholder {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+::-ms-input-placeholder {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}

@@ -1,0 +1,84 @@
+<%- include('partials/header.html') %>
+
+    <section class="noticia-destaque">
+        <div class="center">
+            <!-- Noticia Destaque -->           
+                <div id="jatem" class="img-destaque">
+                    <div class="title-autor">
+                        <img src="../public/image/fundo.jpg" alt="">
+                        
+                        <h4>Por <span><%= post[0].autor %></span></h4>
+                    </div>
+                    
+                    <div class="favorito">
+                        <i class="fa fa-heart" aria-hidden="true"> <%= post[0].views %></i>
+                    </div>
+
+                    <div class="overlay-destaque"></div>
+                    
+                    <div class="title-destaque-descricao">
+                    <a style="text-decoration: none; color: white;" href="<%=post[0].slug %>"> <h2><%= post[0].titulo%></h2> </a>
+                        <p>
+                            
+                            <%- post[0].descricaoCurta %>...
+                        </p>
+                    </div>
+                    <img id="img" src="<%= post[0].imagen %>" alt="destaque">
+              
+                </div>
+            <!-- ============================== -->
+        </div>
+    </section>
+
+    <section class="outras-noticias">
+        <div class="title-outras-noticias">
+            <h2>Ultimas Notícias</h2>
+            <div class="center">
+                <div class="ultimas">
+
+                <!-- Ultima single  -->
+                    <% for(let i = 0; i < post.length; i++) { %>
+                        <div class="box-ultima-sigle">
+                            <img src="<%= post[i].imagen%>" alt="">
+                         <div class="conteudo-noticia-sigle">
+                            <h3><%= post[i].categoria %></h3>
+                            <h2><%= post[i].titulo%></h2>
+                            <p>
+                                <%- post[i].descricaoCurta %>...                                     
+                            </p>
+                            <a href="<%= post[i].slug %>">Saiba Mais</a>
+                         </div>
+                        </div>
+                    <% } %>
+                 <!--  -->
+                </div>
+                <div class="mais-lidas">
+                    <h3>Mais Lidas</h3>
+                    <div class="mais-lida-noticias">
+                        <% for(let i = 0; i < postTop.length; i++) { %>                            
+                        <div class="mais-lida-noticia-single">
+                            <img src="<%= postTop[i].imagen %>" alt="sobrevivente">
+                            <div class="texto-mais-lida-single">
+                                <h4><%= postTop[i].titulo%></h4>
+                                <p><%- postTop[i].descricaoCurta%>...</p>
+                                <i class="fa fa-heart-o" aria-hidden="true"> <%= postTop[i].views %></i>
+                                <a href="<%= postTop[i].slug%>">Saiba Mais</a>
+                            </div>
+
+                        </div>
+                        <% } %>                                
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+    </section>
+
+    <%- include('partials/footer.html') %>
+
+    <script src="../public/script/home.js"></script>
+    
+</body>
+</html>

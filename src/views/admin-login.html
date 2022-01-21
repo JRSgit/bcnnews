@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/login/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"  crossorigin="anonymous">
+    <title>Login BcnNews</title>
+</head>
+<body>
+    <div class="forme">
+        <h1> <a href="/" style="text-decoration: none; color: #05a3d3;"><span>Bcn</span>News </a></h1>  
+        <form action="/auth/admin" method="post">
+            <label for="email">Email:
+            <input id="email" type="text" name="email" placeholder="Email" required/></label>
+            <label for="password">Senha:
+            <input id="password" type="password" name="password" placeholder="Senha" required/></label>
+            <input id="submit" type="submit"  value="Logar">
+        </form>
+        <% if(msg) { %>
+            <label for="msg" id="msg"><%= msg %></label>
+
+         <% } %> 
+    </div>
+    <script src="../public/script/admin-login.js"></script>
+</body>
+</html>
