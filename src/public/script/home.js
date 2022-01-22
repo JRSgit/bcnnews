@@ -46,7 +46,6 @@ async function main(){
 let tempo = 10000
     function loop(){
     
-        console.log(dados);
         setInterval(() => {
             criarDiv(dados, max)
         }, tempo);
