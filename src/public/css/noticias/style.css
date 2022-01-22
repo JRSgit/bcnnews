@@ -48,4 +48,7 @@ section.noticia{
         width: 100%;
         margin-bottom: 20px;
     }
+    .noticia-single p img{
+        width: 100%;
+    }
 }

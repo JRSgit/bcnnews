@@ -298,6 +298,9 @@ footer{
     .img-destaque {
         width: 100%;
     }
+    .img-destaque img#img{
+        width: 100%;
+    }
     .mais-lidas, .ultimas{
         width: 100%;
         margin-bottom: 20px;
