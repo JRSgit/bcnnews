@@ -28,7 +28,7 @@
                         <h2>Cadastro Notícia</h2>
                     </div>
                 <div style="display: flex; font-size: 12px;"><b style="color: #333; ">User || </b> <p>   Admin </p></div> 
-                    <form enctype="multipart/form-data" action="/post/noticia" method="post" >
+                    <form enctype="multipart/form-data" action="/post/noticia/<%= noticiaUp.id %>" method="post" >
                         <div class="input" style="display: flex; flex-direction: column; width: 100%;">
                             <label for="titulo">Titulo: <input 
                                 type="text" name="titulo"  placeholder="Titulo da Notícia" value="<%= noticiaUp.titulo %>" required
@@ -69,8 +69,8 @@
                             <div style="display: flex; flex-direction: row; margin-top: 10px;">
 
                                 <i class="fa fa-heart" aria-hidden="true"><%= noticias[i].views %> </i>
-                                <a href="/auth/admin/<%= noticias[i]._id %>">Editar</a>
-                                <a  id="editar" href="/delete/noticia/<%= noticias[i]._id %>">Excluir</a>
+                                <a href="/noticia/edit/<%= noticias[i]._id %>">Editar</a>
+                                <a  id="excluir" href="/delete/noticia/<%= noticias[i]._id %>">Excluir</a>
                             </div>
                         </div>
                     </div>

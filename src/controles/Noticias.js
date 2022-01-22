@@ -96,22 +96,46 @@ class CtrlNoticias {
     }
     // ==================
     async update(req, res) {
+        const upPost = req.body; 
         const { id } = req.params;
         if (!id) {
             return res.status(400).redirect('/login/admin')
         }
         const allNoticia = await Posts.find();
-        const upNoticia = await Posts.findById({ _id: id });
+        const upNoticia = await Posts.findByIdAndUpdate({ _id: id},  upPost);
+        return res.status(200).redirect('/painel/admin');
+        // res.render('admin-painel', { noticiaUp: upNoticia, noticias: allNoticia, userLog: {}, msg: "" });
+    }
+    // ========================
+    async edit(req, res){
+        const { id } = req.params;
+        if (!id) {
+            return res.status(400).redirect('/login/admin')
+        }
+        const allNoticia = await Posts.find();
+        const upNoticia = await Posts.findOne({ _id: id});
         res.render('admin-painel', { noticiaUp: upNoticia, noticias: allNoticia, userLog: {}, msg: "" });
     }
+
+
     // =========================
     async store(req, res) {
-        const {imagen } = req.files
+       
+        const {imagen} = req.files
+        if(!imagen){
+            return res.status(401).render('admin-painel', {
+                noticiaUp: upNoticia, noticias: allNoticia, userLog: {}, msg: "Adicione uma imagen a notícia"
+            });
+        }
         let formato = imagen.name.split('.');
         var imagem = "";
         const ext = imagen.mimetype.split('/')
         console.log(ext[1]);
-        if (formato[formato.length - 1] == "jpg" || formato[formato.length - 1] == "png") {
+        if (
+            formato[formato.length - 1] == "jpg"
+            || formato[formato.length - 1] == "png"
+            || formato[formato.length - 1] == "webp"
+             ) {
             imagem = new Date().getTime() + `.${ext[1]}`;
             await req.files.imagen.mv(__dirname + '/public/imagens/' + imagem)
         } else {
@@ -119,7 +143,7 @@ class CtrlNoticias {
         }
         const newNoticia = req.body;
         newNoticia.imagen = imagem;
-
+ 
         const newPost = await Posts.create(newNoticia);
 
         if (!newPost) {

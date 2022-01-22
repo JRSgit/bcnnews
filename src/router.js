@@ -15,12 +15,12 @@ router.get('/painel/admin', _userCtrl.indexShow)
 router.get('/auth/admin/:id', _ctrl.update)
 router.get('/delete/noticia/:id', _ctrl.delete)
 
+router.get('/noticia/edit/:id', _ctrl.edit)
+
 router.post('/cadastro/admin', _userCtrl.store);
 router.post('/auth/admin', _userCtrl.authetication);
 router.post('/post/noticia', _ctrl.store);
-router.post('/post/noticia/:id', (req, res)=> {
-    console.log(req.params.id)
-})
+router.post('/post/noticia/:id', _ctrl.update)
 
 
 

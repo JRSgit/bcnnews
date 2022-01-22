@@ -23,12 +23,19 @@ section.noticia{
     font-weight: bold;
 }
 .noticia-single p{
-    color: #7b8591;
-    font-size: 18px;
+    color: #4c4f52;
+    font-size: 20px;
     text-align: left;
     line-height: 26px;
     margin-top: 15px;
 
+}
+.noticia-single p img{
+    max-width: 600px;
+    width: 100%;
+    margin: 30px;
+    
+    
 }
 .noticia-single h3{
     color: #7b8591;

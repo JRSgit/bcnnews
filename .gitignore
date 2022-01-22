@@ -1,3 +1,4 @@
 # arquivos e pastas que não devem subir para produção.
-/node_modules
-/temp
+node_modules
+temp
+src/config/multer.js
