@@ -40,7 +40,7 @@ center[1].appendChild(destaque)
 }
 
 async function main(){
-   const dados = await fazGet("http://localhost:5000/api")
+   const dados = await fazGet("https://bcnnews.herokuapp.com/api")
     const max = dados.length
 
 let tempo = 10000
