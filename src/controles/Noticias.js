@@ -96,15 +96,45 @@ class CtrlNoticias {
     }
     // ==================
     async update(req, res) {
+        // res.render('admin-painel', { noticiaUp: upNoticia, noticias: allNoticia, userLog: {}, msg: "" });
+
+        const imagen = req.files.imagen
         const upPost = req.body; 
         const { id } = req.params;
-        if (!id) {
-            return res.status(400).redirect('/login/admin')
+        if(!imagen){
+            if (!id) {
+                return res.status(400).redirect('/login/admin')
+            }
+            // const allNoticia = await Posts.find();
+            const upNoticia = await Posts.findByIdAndUpdate({ _id: id},  upPost);
+            return res.status(200).redirect('/painel/admin');
+
+            // return res.status(401).render('admin-painel', {
+            //     noticiaUp: upNoticia, noticias: allNoticia, userLog: {}, msg: "Adicione uma imagen a notícia"
+            // });
         }
-        const allNoticia = await Posts.find();
-        const upNoticia = await Posts.findByIdAndUpdate({ _id: id},  upPost);
+        let formato = imagen.name.split('.');
+        var imagem = "";
+        const ext = imagen.mimetype.split('/')
+        
+        if (
+            formato[formato.length - 1] == "jpg"
+            || formato[formato.length - 1] == "png"
+             ) {
+            imagem = new Date().getTime() + `.${ext[1]}`;
+            await req.files.imagen.mv(__dirname + '/public/imagens/' + imagem)
+        } else {
+            fs.unlinkSync(req.files.imagen.tempFilePath);
+        }
+
+        upPost.imagen = imagem;
+        // const allNoticia = await Posts.find();
+        await Posts.findByIdAndUpdate({ _id: id},  upPost);
         return res.status(200).redirect('/painel/admin');
-        // res.render('admin-painel', { noticiaUp: upNoticia, noticias: allNoticia, userLog: {}, msg: "" });
+
+        // const newNoticia = req.body;
+        // newNoticia.imagen = imagem;
+
     }
     // ========================
     async edit(req, res){
@@ -130,7 +160,7 @@ class CtrlNoticias {
         let formato = imagen.name.split('.');
         var imagem = "";
         const ext = imagen.mimetype.split('/')
-        console.log(ext[1]);
+
         if (
             formato[formato.length - 1] == "jpg"
             || formato[formato.length - 1] == "png"

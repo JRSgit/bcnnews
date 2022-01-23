@@ -12,7 +12,7 @@ const router = require('./src/router');
 const app = express();
 const uri = process.env.URI
 
-app.use(cors({ origin: 'https://bcnnews.herokuapp.com/*'}))
+app.use(cors({ origin: 'https://bcnnews.herokuapp.com/*' || 'http://localhost:5000/*'}))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use('/files', express.static(path.resolve(__dirname, "src", "controles", "public", "imagens")))
@@ -46,7 +46,7 @@ mongoose.connect(
         useCreateIndex: true
     }
 ).then(() => {
-    app.listen(process.env.PORT || 3000, () => {
+    app.listen(process.env.PORT || 5000, () => {
         console.log('Server Rodando');
     })
 }).catch((error) =>{

@@ -8,12 +8,12 @@ const postSchema = new Schema({
     conteudo: String,
     slug: String,
     autor: String,
-    views: { type: Number, default: 1}
+    views: { type: Number, default: 1} 
 },{collection: 'post'})
 
 postSchema.pre('save', function() {
     
-        this.imagen = `http://localhost:5000/files/${this.imagen}`
+        this.imagen = `${process.env.URL_FILE}/${this.imagen}`
     
 })
 
