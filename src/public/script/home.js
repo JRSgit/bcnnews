@@ -36,11 +36,11 @@ destaque.innerHTML = '<div class="img-destaque">'+
 
 
 center[1].appendChild(destaque)
-
+5000
 }
 
 async function main(){5000
-   const dados = await fazGet("https://bcnnews.herokuap.com/api")
+   const dados = await fazGet("https://bcnnews.herokuapp.com/api")
     const max = dados.length
 
 let tempo = 10000
