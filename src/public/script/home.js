@@ -5,7 +5,7 @@ function fazGet(url){
     req.send()
     const data = JSON.parse(req.responseText)
     return data
-}
+}5000
 
 let cont = 0
 const center = document.querySelectorAll('.center')
@@ -25,7 +25,7 @@ destaque.innerHTML = '<div class="img-destaque">'+
                         '</div>'+
                         '<div class="favorito">'+
                             '<i class="fa fa-heart" aria-hidden="true">'+post.views+'</i>'+
-                        '</div>'+
+                        '</div>'+50005000
                         '<div class="overlay-destaque"></div>'+
                         '<div class="title-destaque-descricao">'+
                         '<a style="text-decoration: none; color: white;" href="'+post.slug+'"> <h2>'+post.titulo+'</h2></a>'+
@@ -39,8 +39,8 @@ center[1].appendChild(destaque)
 
 }
 
-async function main(){
-   const dados = await fazGet("http://localhost:5000/api")
+async function main(){5000
+   const dados = await fazGet("https://bcnnews.herokuap.com/api")
     const max = dados.length
 
 let tempo = 10000
