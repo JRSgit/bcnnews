@@ -76,7 +76,7 @@ class CtrlNoticias {
                 res.redirect('/');
             }
 
-        })
+        }) 
 
     }
     //= ==================== 
