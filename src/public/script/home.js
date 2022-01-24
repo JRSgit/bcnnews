@@ -39,7 +39,7 @@ function criarDiv(dados, max) {
 }
 
 async function main() {
-    const dados = await fazGet("https://bcnews.herokuapp.com/api")
+    const dados = await fazGet("https://bcnnews.herokuapp.com/api")
     const max = dados.length
 
     let tempo = 10000
