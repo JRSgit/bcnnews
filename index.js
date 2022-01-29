@@ -12,7 +12,7 @@ const router = require('./src/router');
 const app = express();
 const uri = process.env.URI
 
-app.use(cors({ origin: 'https://bcnnews.herokuapp.com/api' }))
+app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/files', express.static(path.resolve(__dirname, "src", "controles", "public", "imagens")))
