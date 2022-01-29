@@ -12,36 +12,36 @@ const router = require('./src/router');
 const app = express();
 const uri = process.env.URI
 
-app.use(cors({ origin: 'https://bcnnews.herokuapp.com/*' || 'http://localhost:5000/*'}))
+app.use(cors({ origin: 'https://bcnnews.herokuapp.com/api' || 'http://localhost:5000/*' }))
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/files', express.static(path.resolve(__dirname, "src", "controles", "public", "imagens")))
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.use('/public',express.static(path.join(__dirname, './src/public')));
+app.use('/public', express.static(path.join(__dirname, './src/public')));
 app.set('views', path.join(__dirname, './src/views'));
 
 // Session ========
 app.use(session({
-    secret: process.env.SESSION_SECRET,
-    cookie: {maxAge: 60000},
-    resave: true,
-    saveUninitialized: false,
-}))
-// =============
+        secret: process.env.SESSION_SECRET,
+        cookie: { maxAge: 60000 },
+        resave: true,
+        saveUninitialized: false,
+    }))
+    // =============
 app.use(fileUpload({
-    useTempFiles: true,
-    tempFileDir: path.join(__dirname, 'temp')
-}))
-//  Rotas =======
+        useTempFiles: true,
+        tempFileDir: path.join(__dirname, 'temp')
+    }))
+    //  Rotas =======
 app.use(router);
 
 
 mongoose.connect(
     uri, {
         useNewUrlParser: true,
-        useUnifiedTopology:true,
+        useUnifiedTopology: true,
         useFindAndModify: true,
         useCreateIndex: true
     }
@@ -49,7 +49,7 @@ mongoose.connect(
     app.listen(process.env.PORT || 5000, () => {
         console.log('Server Rodando');
     })
-}).catch((error) =>{
+}).catch((error) => {
     console.log('Server sem conecção com o banco de dados');
     console.log(error.message);
 })
