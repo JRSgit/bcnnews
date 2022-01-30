@@ -171,6 +171,7 @@ class CtrlNoticias {
             ) {
                 imagem = new Date().getTime() + `.${ext[1]}`;
                 await req.files.imagen.mv(__dirname + '/public/imagens/' + imagem)
+
             } else {
                 fs.unlinkSync(req.files.imagen.tempFilePath);
             }
